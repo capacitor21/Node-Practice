@@ -7,36 +7,17 @@
         <title>Node.js</title>
     </head>
     <body>
-        <script>
-            if ('geolocation' in navigator) {
-                console.log("geolocation available");
-                navigator.geolocation.getCurrentPosition(async function (position) {
-                    const lat = position.coords.latitude;
-                    document.getElementById('latitude').textContent = lat;
-                    const long = position.coords.longitude;
-                    document.getElementById('longitude').textContent = long;
-
-                    const data = {lat, long};
-                    const options = {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    };
-                    const response = await fetch('/api', options);
-                    const json = await response.json();
-                    console.log(json);
-                });
-            } else {
-                console.log("geolocation error");
-            }
-        </script>
         <h1>Welcome</h1>
         <p>
             Your Coordinates<br>
             latitude: <span id="latitude">&deg;</span>
+            <br>
             longitude: <span id="longitude">&deg;</span>
         </p>
+        <form>
+            <input type="text" id="input"></input>
+        </form>
+        <button type="submit" id="submit">Submit</button>   
+        <script src= "app.js"></script>
     </body>
 </html>
